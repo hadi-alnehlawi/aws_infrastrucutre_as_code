@@ -53,10 +53,10 @@ Resources:
       AvailabilityZone: 
         Fn::Select:
           - 0
-          - Fn::GetAZs: ""
+          - Fn::GetAZs: ""  
 
       VpcId: !Ref VPC
       CidrBlock: !Ref PublicSubnet1CIDR
       Tags:
         - Key: Name
-          Value: !Ref ${EnvironmentName} public subnet 1
+          Value: !Sub ${EnvironmentName} public subnet 1
