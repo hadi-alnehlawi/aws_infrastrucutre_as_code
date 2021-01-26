@@ -7,6 +7,11 @@ Parameters:
     Description: "vcp cid value"
     Type: String
 
+  PublicSubnet1CIDR:
+    Description: "public subnet 1"
+    Type: String
+
+
 
 Resources:
   VPC:
@@ -30,3 +35,13 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       InternetGatewayId: !Ref myIG
+  
+  publicsubet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: zone-id
+      VpcId: !Ref VPC
+      CidrBlock: !Ref PublicSubnet1CIDR
+      Tags:
+        - Key: Name
+          Value: !Ref ${EnvironmentName} public subnet 1
