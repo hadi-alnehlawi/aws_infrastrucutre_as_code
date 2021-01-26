@@ -1,0 +1,19 @@
+Parameters:
+  EnvironmentName:
+    Description: "environemtn name for resource tag"
+    Type: String
+
+  VpcCIDR:
+    Description: "vcp cid value"
+    Type: String
+
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCIDR
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Ref EnvironmentName
