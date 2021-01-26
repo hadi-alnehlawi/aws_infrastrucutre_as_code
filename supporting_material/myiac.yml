@@ -11,6 +11,17 @@ Parameters:
     Description: "public subnet 1"
     Type: String
 
+  PublicSubnet2CIDR:
+    Description: "public subnet 2"
+    Type: String
+
+  PrivateSubnet1CIDR:
+    Description: "private subnet 1"
+    Type: String
+
+  PrivateSubnet2CIDR:
+    Description: "private subnet 2"
+    Type: String
 
 
 Resources:
@@ -39,7 +50,11 @@ Resources:
   publicsubet1:
     Type: AWS::EC2::Subnet
     Properties:
-      AvailabilityZone: zone-id
+      AvailabilityZone: 
+        Fn::Select:
+          - 0
+          - Fn::GetAZs: ""
+
       VpcId: !Ref VPC
       CidrBlock: !Ref PublicSubnet1CIDR
       Tags:
