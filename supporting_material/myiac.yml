@@ -34,20 +34,20 @@ Resources:
         - Key: Name
           Value: !Ref EnvironmentName
 
-  myIG:
+  InternetGateway:
     Type: AWS::EC2::InternetGateway
     Properties:
       Tags:
         - Key: Name
           Value: !Ref EnvironmentName
 
-  myAttachedIG:
+  AttachedInternetGateway:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
       VpcId: !Ref VPC
-      InternetGatewayId: !Ref myIG
+      InternetGatewayId: !Ref InternetGateway
   
-  Publicsubet1:
+  PublicSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
       AvailabilityZone: 
@@ -60,7 +60,7 @@ Resources:
         - Key: Name
           Value: !Sub ${EnvironmentName} public subnet 1
 
-  Publicsubet2:
+  PublicSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
       AvailabilityZone: 
